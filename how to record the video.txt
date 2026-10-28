@@ -1,0 +1,38 @@
+1. install + configure (once)
+- install "Sensor Logger" (Kelvin Choi) from Play Store / App Store
+- open it, tap the sensors tab, enable Accelerometer and Gyroscope only
+- tap each one, set sampling rate to 50 Hz
+
+2. record one sample
+- put phone in your hand at waist level
+- hit the big red record button, do the activity for 5 to 10 seconds, hit stop
+- that's one sample. repeat.
+
+you need about 20 samples per activity total across your group. if there are 4 of you, that's 5 samples each per activity.
+
+3. export
+- go to the recordings tab, tap a recording, tap export, choose CSV
+- it gives you a zip. save it to your laptop and unzip it
+- inside you'll see Accelerometer.csv and Gyroscope.csv
+
+4. convert it
+
+in a terminal:
+cd /home/kan/Projects/School/hmm-activity-recognition
+source .venv/bin/activate
+python prepare_sensor_logger.py ~/Downloads/the-unzipped-folder walking kan train
+that writes data/train/walking_kan_01.csv. run it once per recording, changing the folder and the activity name. the script auto numbers so you won't overwrite anything.
+
+activity has to be exactly one of: standing, walking, jumping, still
+
+5. the test set
+
+do a second round of recording later (different day, or a different person, or different room). same steps but end the command with test instead of train. 2 or 3 samples per activity is enough.
+
+6. videos
+
+4 clips, 5 seconds each, one per activity. someone films you, full body + the phone visible, face visible, decent lighting. drop them in videos/.
+
+7. run it
+jupyter notebook hmm_activity.ipynb
+run all cells.

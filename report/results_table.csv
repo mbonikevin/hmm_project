@@ -1,0 +1,5 @@
+state (activity),number of samples,sensitivity,specificity,overall accuracy
+standing,96,0.927,0.979,0.966
+walking,95,1.0,0.973,0.979
+jumping,99,0.939,1.0,0.984
+still,97,0.938,0.983,0.972
